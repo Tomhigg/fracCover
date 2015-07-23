@@ -1,6 +1,6 @@
 #' Batch Generate CSV Training Files
 
-#'@param raster_path A list of path to the classified high-resolution imagery (use list.files)
+#'@param raster_path A list of paths to the classified high-resolution imagery (use list.files)
 #'@param inPredImage Name and path for the input image that will be used for predictions (Landsat/MODIS)
 #'@param fromVals vector of the values in classified image
 #'@param toVals vector which values will be changes too 
@@ -8,7 +8,7 @@
 #'
 #'@description
 #'
-#'Function preforms a batch implmentation of the csv_create function, allowing multiple seperate aerial images to to processed
+#'Preforms a batch implmentation of the csv_create function, allowing multiple high-res images to to processed into training files
 #'at the same time.
 
 #'@examples
@@ -18,14 +18,14 @@
 #'percent_cover <-csv_batch(raster_path = shrub_mask_list,inPred = Landsat_SA_CRS,numSamps = 5000)
 
 #' Class numbers that will be mapped using the following scheme:
-#' 0 = no data such as background, clouds and shadow
-#' 1 = class for which percent cover is being calculated 
-#' 2 = all other land cover classes
+#'    0 = no data such as background, clouds and shadow
+#'    1 = class for which percent cover is being calculated 
+#'    2 = all other land cover classes
 #' fromVals <- c(0,1, 2, 3)
 #' toVals <-   c(2,1, 2, 2)
 
-csv_batch <- function(raster_path,inPred,numSamps ){
-  mat <- sapply(X = raster_path,FUN = fracCover::create_csv, inPred=inPred,numSamps=numSamps,fromVals,toVals)
+csv_batch <- function(raster_path,inPred,numSamps, fromVals,toVals){
+  mat <- sapply(X = raster_path,FUN = create_csv, inPred=inPred,numSamps=numSamps,fromVals=fromVals,toVals=toVals)
   
   len  <- length(raster_path)
   

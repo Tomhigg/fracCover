@@ -1,0 +1,15 @@
+Package: fracCover
+Type: Package
+Title: Generate and Validate Fractional Coverage products using Landsat/MODIS
+Version: 1.0
+Date: 2015-07-23
+Author: Tom Higginbottom
+Maintainer: Who to complain to <T.Higginbottom@mmu.ac.uk>
+Description: Generate and Validate Fractional Coverage products using Landsat/MODIS, some functions based on Ned Horning (AMNH)
+    original scripts 
+License: What license is it under?
+URL: http://github.com/Tomigg/fracCover
+BugReports: http://github.com/Tomigg/fracCover/issues
+Imports:
+  sp,
+  raster

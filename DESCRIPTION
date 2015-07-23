@@ -15,4 +15,5 @@ Imports:
   raster,
   maptools,
   randomForest,
-  rgdal
+  rgdal,
+  parallel

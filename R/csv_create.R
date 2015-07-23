@@ -37,7 +37,7 @@
 #' fromVals <- c(0,1, 2, 3)
 #' toVals <-   c(2,1, 2, 2)
 
-create_csv <- function(inPred,inClass,numSamps,fromVals,toVals){
+create_csv <- function(inPred,inClass,numSamps,fromVals, toVals){
 # Start processing
 print("Set variables and start processing")
 startTime <- Sys.time()
@@ -45,6 +45,7 @@ cat("Start time", format(startTime),"\n")
 
 # Threshold for no-data processing
 noDataPct <- 0.9
+
 
 # Load the classified image
 classImage <- raster(inClass)
@@ -61,14 +62,14 @@ halfCell <- predImageRes/2
 
 # Check to make sure fromVals and toVals are the same length
 if (length(fromVals) != length(toVals)) {
-   stop("fromVals and toVals must have the same number of values \n\n", call.=FALSE)
+  stop("fromVals and toVals must have the same number of values \n\n", call.=FALSE)
 }
 
 # Select the class values that will be used to create the percent cover map
 percentCoverValues <- fromVals[toVals == 1]
 
 # Calculate the common extent to ensure sample cover both images
-commonExt <- intersect(extent(predImage), extent(classImage))
+commonExt <- raster::intersect(extent(predImage), extent(classImage))
 
 # Select random samples from the prediciton image
 cat("\nSelecting", numSamps, "samples from the prediction image\n")
@@ -83,26 +84,26 @@ fromTo <- data.frame(from=fromVals, to=as.integer(toVals==1))
 # Get the pixels values from the classified image that fit inside the selected course-resolution pixel
 cat("Calculating percent cover values for the output matrix\n\n")
 for (i in 1:lenSampCells) {
-   # Get the x and y coordinate from the center of the predition image pixel indicated by the sample point
-   centerCoords <- sampleCells[i,1:2]
-   # Insert x and y coordinate into the output matrix
-   outputMatrix[i,1:2] <- c(centerCoords)
-   # Calculate the extent of the selected prediction image pixel by adding/subtracting half the resolution of the pixel
-   ext <- extent(centerCoords[1] - halfCell, centerCoords[1] + halfCell, centerCoords[2] - halfCell, centerCoords[2] + halfCell)
-   # Get the cell numbers of all the classified image pixels that fall inside the extent of the selected prediction image pixel
-   classCellNumbers <- cellsFromExtent(classImage, ext)
-   # Get the class number of all of the selected classified image pixels
-   classCellValues <- extract(classImage, classCellNumbers)
-   # Convert classCellValues no-data pixels (0 in toVals) to NA
-   classCellValues[classCellValues %in% fromVals[toVals==0]] <- NA
-   # If the number of no-data pixels from the classified image is less than 'noDataPct' then calculate the percent cover
-   # otherwise output NA
-   if (sum(is.na(classCellValues))/length(classCellValues) < noDataPct) {
-      outputMatrix[i,3] <- sum(!is.na(match(classCellValues, fromVals[toVals==1])))/length(classCellNumbers)
-   } else {
-      outputMatrix[i,3] <- NA
-   }
-   if (i %% 25 == 0)    cat("Processing sample", i, "of", lenSampCells, "\r")
+  # Get the x and y coordinate from the center of the predition image pixel indicated by the sample point
+  centerCoords <- sampleCells[i,1:2]
+  # Insert x and y coordinate into the output matrix
+  outputMatrix[i,1:2] <- c(centerCoords)
+  # Calculate the extent of the selected prediction image pixel by adding/subtracting half the resolution of the pixel
+  ext <- extent(centerCoords[1] - halfCell, centerCoords[1] + halfCell, centerCoords[2] - halfCell, centerCoords[2] + halfCell)
+  # Get the cell numbers of all the classified image pixels that fall inside the extent of the selected prediction image pixel
+  classCellNumbers <- cellsFromExtent(classImage, ext)
+  # Get the class number of all of the selected classified image pixels
+  classCellValues <- extract(classImage, classCellNumbers)
+  # Convert classCellValues no-data pixels (0 in toVals) to NA
+  classCellValues[classCellValues %in% fromVals[toVals==0]] <- NA
+  # If the number of no-data pixels from the classified image is less than 'noDataPct' then calculate the percent cover
+  # otherwise output NA
+  if (sum(is.na(classCellValues))/length(classCellValues) < noDataPct) {
+    outputMatrix[i,3] <- sum(!is.na(match(classCellValues, fromVals[toVals==1])))/length(classCellNumbers)
+  } else {
+    outputMatrix[i,3] <- NA
+  }
+  if (i %% 25 == 0)    cat("Processing sample", i, "of", lenSampCells, "\r")
 }
 
 # Write out the non-NA values in the output matrix to a CSV file

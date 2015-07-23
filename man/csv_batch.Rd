@@ -4,7 +4,7 @@
 \alias{csv_batch}
 \title{Batch Generate CSV Training Files}
 \usage{
-csv_batch(raster_path, inPred, numSamps, fromVals, toVals, ndPred)
+csv_batch(raster_path, inPred, numSamps, fromVals, toVals)
 }
 \arguments{
 \item{raster_path}{A list of paths to the classified high-resolution imagery (use list.files)}
@@ -13,9 +13,9 @@ csv_batch(raster_path, inPred, numSamps, fromVals, toVals, ndPred)
 
 \item{toVals}{vector which values will be changes too}
 
-\item{ndPred}{No data value for the prediction image (normally 0)}
-
 \item{inPredImage}{Name and path for the input image that will be used for predictions (Landsat/MODIS)}
+
+\item{ndPred}{No data value for the prediction image (normally 0)}
 }
 \description{
 Preforms a batch implmentation of the csv_create function, allowing multiple high-res images to to processed into training files

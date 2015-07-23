@@ -12,4 +12,7 @@ URL: http://github.com/Tomigg/fracCover
 BugReports: http://github.com/Tomigg/fracCover/issues
 Imports:
   sp,
-  raster
+  raster,
+  maptools,
+  randomForest,
+  rgdal

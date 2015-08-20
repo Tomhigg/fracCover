@@ -1,1 +1,6 @@
 exportPattern("^[[:alpha:]]+")
+import(raster)
+import(sp)
+import(maptools)
+import(randomForest)
+import(rgdal)

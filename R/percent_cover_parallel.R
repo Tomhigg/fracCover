@@ -30,24 +30,19 @@ cl <- makeCluster(spec = no_cores)
 # Register the cluster with foreach:
 registerDoParallel(cl)
 
-
 # Load the moderate resolution image
-satImage <-stack(inImage)
-for (b in 1:nlayers(satImage)) { NAvalue(satImage@layers[[b]]) <- LS.no.data}
-
-
-
+for (b in 1:nlayers(inImage)) { NAvalue(inImage@layers[[b]]) <- LS.no.data}
 
 #load point data
 #point.csv <- read.csv(file = pointData,header = TRUE)
 xy <- SpatialPoints(pointdata[,1:2],proj4string = point_CRS)
-xy <-spTransform(x = xy,(crs(satImage)))
+xy <-spTransform(x = xy,(crs(inImage)))
 response <- as.numeric(pointdata[,3])
 
 
 # Get pixel DNs from the input image for each sample point
 print("Getting the pixel values under each point")
-trainvals <- cbind(response, extract(satImage, xy)) 
+trainvals <- cbind(response, extract(inImage, xy)) 
 
 # Remove NA values from trainvals
 trainvals_no_na <- na.omit(trainvals)
@@ -58,7 +53,7 @@ print("Starting to calculate random forest object")
 randfor <- randomForest(response ~. , data=trainvals_no_na)
 
 
-
+print("Enter the Matrix")
 randomForest_raster_predict <- function(inraster,rfModel,...)
 {
   # We need to load randomForest (note this is only
@@ -104,15 +99,16 @@ system.time(
       fun=randomForest_raster_predict,
       args=list(rfModel= randfor)
     ))
-
+print("Unplug")
 cover_output <- setMinMax(cover_output_array)
 
-writeRaster(x = cover_output,filename = outImage)
 
 stopCluster(cl) # Stops the cluster
-
-return(cover_output)
+writeRaster(x = cover_output,filename = outImage, format="GTiff", overwrite=TRUE)
 
 # Calculate processing time
 timeDiff <- Sys.time() - startTime
-cat("Processing time", format(timeDiff), "\n")}
+cat("Processing time", format(timeDiff), "\n")
+return(cover_output)
+
+}

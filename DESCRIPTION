@@ -16,4 +16,13 @@ Imports:
   maptools,
   randomForest,
   rgdal,
-  parallel
+  parallel,
+  doParallel
+Depends:
+  sp,
+  raster,
+  maptools,
+  randomForest,
+  rgdal,
+  parallel,
+  doParallel

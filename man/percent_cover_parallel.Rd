@@ -2,14 +2,7 @@
 % Please edit documentation in R/percent_cover_parallel.R
 \name{percent_cover_parallel}
 \alias{percent_cover_parallel}
-\title{Percentage Cover Calculations-Full Function
-This script reads training data from the CSV file created using the "rf_csv"
-script.  The script then uses the X and Y coordinates from the training data file to select
-the pixel values (predictor values) for each sample point in the input image. The predictor
-values and the percent cover data from the training data file (response variable) are
-combined and used as input to the random forests model. After the model is created percent
-cover predictions are made on the input image to create an output image with percent cover
-values ranging from 0 to 1.}
+\title{Percentage Cover Calculations}
 \usage{
 percent_cover_parallel(no_cores, inImage, pointdata, outImage, LS.no.data,
   point_CRS)
@@ -28,11 +21,10 @@ percent_cover_parallel(no_cores, inImage, pointdata, outImage, LS.no.data,
 \item{outImage.}{Name and path for the output classified image}
 }
 \value{
-a raster images classified into percentage coverage
+a raster image classified into percentage coverage
 }
 \description{
-Percentage Cover Calculations-Full Function
-This script reads training data from the CSV file created using the "rf_csv"
+This script reads training data from the CSV file created using the "create_csv"
 script.  The script then uses the X and Y coordinates from the training data file to select
 the pixel values (predictor values) for each sample point in the input image. The predictor
 values and the percent cover data from the training data file (response variable) are

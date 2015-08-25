@@ -7,14 +7,14 @@
 validation_extract(validationData, rasterLayers, pointCRS)
 }
 \arguments{
-\item{validationData}{data.frame containing the validation values in format "x","y","pccov"}
+\item{validationData}{data.frame containing the validation values in format "x","y","pc.cov"}
 
-\item{rasterLayers}{raster stack/layer of the cover models}
+\item{rasterLayers}{raster object of the variable to extract.}
 
-\item{pointCRS}{CRS obect for the validationData points}
+\item{pointCRS}{CRS object for use with the validationData points.}
 }
 \value{
-a dataframe containign the extracted values, plus actual values and cell numbers. In long format
+a dataframe containing the extracted values, plus actual values and cell numbers. In long format
 }
 \description{
 Takes and input dataframe and containing co-ordinates and actual(validation) values, extracts corresponding

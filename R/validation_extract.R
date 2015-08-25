@@ -4,11 +4,11 @@
 #'Takes and input dataframe and containing co-ordinates and actual(validation) values, extracts corresponding 
 #'predicted values and return a long format data frame 
 
-#'@param validationData data.frame containing the validation values in format "x","y","pccov"
-#'@param rasterLayers raster stack/layer of the cover models
-#'@param pointCRS CRS obect for the validationData points 
+#'@param validationData data.frame containing the validation values in format "x","y","pc.cov"
+#'@param rasterLayers raster object of the variable to extract.
+#'@param pointCRS CRS object for use with the validationData points.
 
-#'@return a dataframe containign the extracted values, plus actual values and cell numbers. In long format 
+#'@return a dataframe containing the extracted values, plus actual values and cell numbers. In long format 
 
 validation_extract <-function(validationData,rasterLayers,pointCRS){
 

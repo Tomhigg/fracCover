@@ -1,6 +1,7 @@
-#' Percentage Cover Calculations-Full Function 
+#' Percentage Cover Calculations 
 
-#' This script reads training data from the CSV file created using the "rf_csv" 
+#'@description
+#' This script reads training data from the CSV file created using the "create_csv" 
 #' script.  The script then uses the X and Y coordinates from the training data file to select
 #' the pixel values (predictor values) for each sample point in the input image. The predictor 
 #' values and the percent cover data from the training data file (response variable) are 
@@ -14,7 +15,7 @@
 #'@param LS.no.data No data value for the Landsat image, normally 0 
 #'@param outImage. Name and path for the output classified image 
 #'@param point_CRS a CRS object for the training data 
-#'@return a raster images classified into percentage coverage
+#'@return a raster image classified into percentage coverage
 
 
 

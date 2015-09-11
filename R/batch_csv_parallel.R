@@ -21,7 +21,7 @@ clusterExport(cl=cl, varlist, envir=environment())
 clusterEvalQ(cl, library(raster))
 
 mat <- parSapply(cl = cl,X = list,FUN = create_csv, inPred=predImage, fromVals=fromVals,toVals=toVals,numSamps=numSamps)
-len  <- length(shrub_mask_list)
+len  <- length(list)
 x <- as.vector(mat[1:(nrow(x = mat)/3),1:len])
 y <- as.vector(mat[((nrow(x = mat)/3)+1):((nrow(x = mat)/3)*2),1:len])
 pc <- as.vector(mat[(((nrow(x = mat)/3)*2)+1):(nrow(x = mat)),1:len])

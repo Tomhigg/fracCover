@@ -1,4 +1,4 @@
-#' Random Forest Percent Cover Modelelling   
+#' Random Forest Percent Cover Modelling   
 #' 
 #'@description
 #' This script reads training data from the CSV file created using the "csv_create/batch_csv" 
@@ -21,7 +21,6 @@ percent_cover_model<-function(inImage, pointdata,outImage,LS.no.data,point_CRS){
 print("Set variables and start processing")
 startTime <- Sys.time()
 cat("Start time", format(startTime),"\n")
-
 
 # Load the moderate resolution image
 satImage <-stack(inImage)

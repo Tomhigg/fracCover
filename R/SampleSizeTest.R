@@ -1,9 +1,9 @@
-#' Test the affect of changing sample size on model preformance 
+#' Test the affect of changing sample size on model performance 
 #' 
 #'@description
 #' 
-#' Test how changing a model sample size affect model preformance. Function requires seperate training and test data. Currently only parallel processing using doParalell is 
-#' supported, will add a non paralel version soon 
+#' Test how changing a model sample size affect model performance. Function requires separate training and test data. Currently only parallel processing using doParalell is 
+#' supported, will add a non parallel version soon 
 #' 
 #'
 #'  
@@ -15,7 +15,7 @@
 #'@param testX A data frame of predictor variables used for testing, row numbers MUST corespond to the values in testY
 #'@param sizes A vector of samples sizes to be tested
 #'@param NoCores Number of Cores to used to parallel processing 
-#'@return A dataframe of model preformance statistics for each sample size test. Metrics returned include coefficient of determination (Rsq), root mean squared error (RMSE), mean error (ME), mean absolute error (MAE).
+#'@return A dataframe of model performance statistics for each sample size test. Metrics returned include coefficient of determination (Rsq), root mean squared error (RMSE), mean error (ME), mean absolute error (MAE).
 
 
 SampleSizeTest  <- function(train,trainingY,testY,testX,sizes,NoCores){

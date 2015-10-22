@@ -57,7 +57,7 @@ predImage <- raster(inPred)
 # Calculate the resolution of the two images
 predImageRes <- res(predImage)[1]
 classImageRes <- res(classImage)[1]
-# Calculate the distance from the center of a raster cell to the edge - assuming a square pixel
+# Calculate the distance from the centre of a raster cell to the edge - assuming a square pixel
 halfCell <- predImageRes/2
 
 # Check to make sure fromVals and toVals are the same length
@@ -71,7 +71,7 @@ percentCoverValues <- fromVals[toVals == 1]
 # Calculate the common extent to ensure sample cover both images
 commonExt <- raster::intersect(extent(predImage), extent(classImage))
 
-# Select random samples from the prediciton image
+# Select random samples from the prediction image
 cat("\nSelecting", numSamps, "samples from the prediction image\n")
 sampleCells <- sampleRandom(crop(predImage,commonExt), size=numSamps, xy=TRUE, ext=commonExt, na.rm=TRUE)
 lenSampCells <- nrow(sampleCells)
@@ -84,7 +84,7 @@ fromTo <- data.frame(from=fromVals, to=as.integer(toVals==1))
 # Get the pixels values from the classified image that fit inside the selected course-resolution pixel
 cat("Calculating percent cover values for the output matrix\n\n")
 for (i in 1:lenSampCells) {
-  # Get the x and y coordinate from the center of the predition image pixel indicated by the sample point
+  # Get the x and y coordinate from the centre of the prediction image pixel indicated by the sample point
   centerCoords <- sampleCells[i,1:2]
   # Insert x and y coordinate into the output matrix
   outputMatrix[i,1:2] <- c(centerCoords)

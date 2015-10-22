@@ -7,7 +7,7 @@
 csv_batch_parallel(no_cores, list, predImage, fromVals, toVals, numSamps)
 }
 \arguments{
-\item{no_cores}{number of cores to implement parellel on}
+\item{no_cores}{number of cores to implement parallel on}
 
 \item{list}{A list of paths to the classified high-resolution imagery (use list.files)}
 
@@ -20,7 +20,7 @@ csv_batch_parallel(no_cores, list, predImage, fromVals, toVals, numSamps)
 \item{inPredImage}{Name and path for the input image that will be used for predictions (Landsat/MODIS)}
 }
 \description{
-Preforms a parellel batch implmentation of the csv_create function, allowing multiple high-res images to to processed into training files
+Preforms a parallel batch implementation of the csv_create function, allowing multiple high-res images to to processed into training files
 at the same time.
 }
 

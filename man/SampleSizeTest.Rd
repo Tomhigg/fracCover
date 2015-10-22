@@ -2,7 +2,7 @@
 % Please edit documentation in R/SampleSizeTest.R
 \name{SampleSizeTest}
 \alias{SampleSizeTest}
-\title{Test the affect of changing sample size on model preformance}
+\title{Test the affect of changing sample size on model performance}
 \usage{
 SampleSizeTest(train, trainingY, testY, testX, sizes, NoCores)
 }
@@ -20,10 +20,10 @@ SampleSizeTest(train, trainingY, testY, testX, sizes, NoCores)
 \item{NoCores}{Number of Cores to used to parallel processing}
 }
 \value{
-A dataframe of model preformance statistics for each sample size test. Metrics returned include coefficient of determination (Rsq), root mean squared error (RMSE), mean error (ME), mean absolute error (MAE).
+A dataframe of model performance statistics for each sample size test. Metrics returned include coefficient of determination (Rsq), root mean squared error (RMSE), mean error (ME), mean absolute error (MAE).
 }
 \description{
-Test how changing a model sample size affect model preformance. Function requires seperate training and test data. Currently only parallel processing using doParalell is
-supported, will add a non paralel version soon
+Test how changing a model sample size affect model performance. Function requires separate training and test data. Currently only parallel processing using doParalell is
+supported, will add a non parallel version soon
 }
 

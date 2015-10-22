@@ -1,7 +1,7 @@
 #' Parallel  Generate CSV Training Files
 #' 
 #' 
-#'@param no_cores number of cores to implement parellel on 
+#'@param no_cores number of cores to implement parallel on 
 #'@param list A list of paths to the classified high-resolution imagery (use list.files)
 #'@param inPredImage Name and path for the input image that will be used for predictions (Landsat/MODIS)
 #'@param fromVals vector of the values in classified image
@@ -10,7 +10,7 @@
 #'
 #'@description
 #'
-#'Preforms a parellel batch implmentation of the csv_create function, allowing multiple high-res images to to processed into training files
+#'Preforms a parallel batch implementation of the csv_create function, allowing multiple high-res images to to processed into training files
 #'at the same time.
 
 csv_batch_parallel  <- function(no_cores, list, predImage, fromVals, toVals,numSamps){

@@ -25,11 +25,11 @@ VariableComboTest(trainY, trainX, testY, testX, varCol, ModelNames, reps,
 \item{NoCores}{Number of Cores to used to parallel processing}
 }
 \value{
-A dataframe of model preformance statistics for each sample variable combination.  Metrics returned include coefficient of determination (Rsq), root mean squared error (RMSE), mean error (ME), mean absolute error (MAE).
+A dataframe of model performance statistics for each sample variable combination.  Metrics returned include coefficient of determination (Rsq), root mean squared error (RMSE), mean error (ME), mean absolute error (MAE).
 }
 \description{
-Test how different model predictor combinations affect model preformance. Function requires seperate training and test data. Currently only parallel processing using doParalell is
-supported, will add a non paralel version soon
+Test how different model predictor combinations affect model performance. Function requires separate training and test data. Currently only parallel processing using doParallel is
+supported, will add a non parallel version soon
 }
 \examples{
 #varCol  <- list(c(4:9),c(4:11),c(10:11),c(12:17),c(12:19),c(18:19),c(4:9,12:17), c(4:19),c(18,19,10,11),c(20,21),c(20,21,12:17),c(20,21,4:9),c(20,21,4:9,12:17),c(4:21))

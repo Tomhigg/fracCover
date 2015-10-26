@@ -23,7 +23,7 @@ BatchAggregate <- function(inRaster,scaleVector, outNames, NoCores){
   clusterExport(cl=cl, varlist=c("inRaster","scaleVector", "outNames"),envir=environment())
   clusterEvalQ(cl, library(raster))
 
-  foreach(i=resolutioVector)%dopar%{
+  foreach(i=scaleVector)%dopar%{
     filenam <- paste0(outNames,i,".tiff")
     raster::aggregate(x = cropedstack,fact = i,FUN = mean, filename=filenam ,bylayer=FALSE)}
   
